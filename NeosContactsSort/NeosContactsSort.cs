@@ -145,14 +145,15 @@ namespace NeosContactsSort
             var currentStatus = data?.CurrentStatus;
             return currentStatus?.OnlineStatus switch
             {
-                OnlineStatus.Online => 1,
-                OnlineStatus.Away => 2,
-                OnlineStatus.Busy => 3,
+                OnlineStatus.Sociable => 1,
+                OnlineStatus.Online => 2,
+                OnlineStatus.Away => 3,
+                OnlineStatus.Busy => 4,
                 // Offline or Invisible
                 _ => currentStatus?.SessionType switch
                 {
-                    UserSessionType.Headless or UserSessionType.ChatClient or UserSessionType.Bot => 4,
-                    _ => 5, // really Offline or Invisible
+                    UserSessionType.Headless or UserSessionType.ChatClient or UserSessionType.Bot => 5,
+                    _ => 6, // really Offline or Invisible
                 }
             };
         }
